@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renter Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='renter_dashboard.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Available Rooms for Rent</h2>
+
+        <!-- Navigation Buttons -->
+        <div class="owned-rooms-btn">
+            <a href="{{ url_for('owned_rooms') }}" class="btn btn-owned">See Owned Rooms</a>
+            <a href="{{ url_for('switch_to_owner') }}" class="btn btn-owner">Go to Owner Dashboard</a>
+        </div>
+
+        <!-- Filter Form -->
+        <form action="{{ url_for('filter_rooms') }}" method="POST" class="filter-form">
+            <input type="text" name="city" placeholder="Enter city (e.g., Delhi)">
+            <input type="number" name="max_price" placeholder="Max Price">
+            <button type="submit" class="btn btn-filter">Search</button>
+        </form>
+
+        <!-- Room Gallery -->
+        <div class="room-gallery">
+            {% if rooms %}
+                {% for room in rooms %}
+                    <div class="room-card">
+                        <div class="room-image">
+                            {% if room[5] %}
+                                <a href="{{ url_for('room_detail', room_id=room[0]) }}">
+                                    <img src="{{ url_for('static', filename='uploads/' + room[5].split('/')[-1]) }}" alt="Room Image" class="room-img">
+                                </a>
+                            {% endif %}
+                        </div>
+                        <div class="room-title">
+                            <h3>{{ room[2] }}</h3>
+                        </div>
+                        <div class="room-actions">
+                            <a href="{{ url_for('room_detail', room_id=room[0]) }}" class="btn btn-details">View Details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No rooms available based on your search.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0a0f1f;
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Glowing sun on the right side */
+.sun {
+    position: absolute;
+    right: -200px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #ffea00, #ffb300, #ff9800);
+    border-radius: 50%;
+    box-shadow: 0 0 60px 30px rgba(255, 234, 0, 0.4),
+                0 0 100px 60px rgba(255, 172, 0, 0.2);
+    z-index: 0;
+}
+
+/* Glowing bordered container */
+.container {
+    position: relative;
+    z-index: 2;
+    background: rgba(20, 20, 40, 0.85);
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 0 25px rgba(255, 255, 0, 0.1),
+                0 0 50px rgba(255, 255, 0, 0.2);
+    border: 2px solid rgba(255, 235, 59, 0.4);
+}
+
+/* Heading */
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #ffeb3b;
+}
+
+/* Table styling */
+.room-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.room-table th,
+.room-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.room-table th {
+    background-color: rgba(255, 235, 59, 0.1);
+    color: #ffeb3b;
+}
+
+/* Uniform Image Size */
+.room-img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 235, 59, 0.4);
+}
+
+/* No rooms message */
+.no-rooms {
+    text-align: center;
+    font-size: 18px;
+    color: #ccc;
+}
+
+/* Delete button */
+.delete-btn {
+    background-color: #ff5722;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #e64a19;
+}

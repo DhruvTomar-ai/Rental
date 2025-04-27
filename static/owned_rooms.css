@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0c10;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(10, 10, 10, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+h2 {
+    text-align: center;
+    color: #ffcc00;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.room-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.room-card {
+    background-color: #222;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+}
+
+.room-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.room-title h3 {
+    color: #ffcc00;
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+.room-title p {
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+}
+
+.room-actions .btn {
+    background-color: #ffcc00;
+    color: #121212;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.room-actions .btn:hover {
+    background-color: #ff9900;
+    transform: scale(1.05);
+}
+
+.room-actions .btn-delete {
+    background-color: #ff6666;
+    color: white;
+}
+
+.room-actions .btn-delete:hover {
+    background-color: #cc4444;
+}
+
+.room-actions .btn-pay {
+    background-color: #00b3b3;
+    color: white;
+}
+
+.room-actions .btn-pay:hover {
+    background-color: #009999;
+}

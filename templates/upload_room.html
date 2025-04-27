@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Room</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='upload_room.css') }}">
+</head>
+<body>
+    <div class="nebula"></div>
+    <div class="asteroid-ring"></div>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+          <li class="flash">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <h2>Upload Room</h2>
+        <form action="/upload_room" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="owner_name">Owner Name:</label>
+                <input type="text" id="owner_name" name="owner_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="rent">Rent (per month):</label>
+                <input type="number" id="rent" name="rent" required>
+            </div>
+
+            <div class="form-group">
+                <label for="room_image">Upload Room Image:</label>
+                <input type="file" id="room_image" name="room_image" accept="image/*" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Upload Room</button>
+        </form>
+    </div>
+</body>
+</html>

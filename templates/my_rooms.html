@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Uploaded Rooms</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='my_rooms.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Your Uploaded Rooms</h2>
+
+        {% if rooms %}
+        <table class="room-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Location</th>
+                    <th>Description</th>
+                    <th>Rent (₹/month)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for room in rooms %}
+                <tr>
+                    <td>
+                        {% if room[5] %}
+                        <img src="{{ url_for('static', filename='uploads/' + room[5].split('/')[-1]) }}" alt="Room Image" class="room-img">
+                        {% else %}
+                        No Image
+                        {% endif %}
+                    </td>
+                    <td>{{ room[2] }}</td>
+                    <td>{{ room[3] }}</td>
+                    <td>₹{{ room[4] }}</td>
+                    <td>
+                        <form action="{{ url_for('DeleteRoom', room_id=room[0]) }}" method="POST">
+                            <button class="delete-btn" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p class="no-rooms">No rooms uploaded yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

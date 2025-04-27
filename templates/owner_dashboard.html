@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='owner_dashboard.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <h1>Owner Dashboard</h1>
+        </header>
+        <section class="card-container">
+            <a href="/upload_room" class="card">
+                <img src="{{ url_for('static', filename='icons/upload.png') }}" alt="Upload Room">
+                <span>Upload a Room</span>
+            </a>
+
+            <a href="/my_rooms" class="card">
+                <img src="{{ url_for('static', filename='icons/view.png') }}" alt="My Rooms">
+                <span>View My Uploaded Rooms</span>
+            </a>
+
+            <a href="/view_bookings" class="card">
+                <img src="{{ url_for('static', filename='icons/bookings.png') }}" alt="View Bookings">
+                <span>View Bookings on My Rooms</span>
+            </a>
+
+            <a href="/switch_to_renter" class="card">
+                <img src="{{ url_for('static', filename='icons/switch.png') }}" alt="Switch to Renter">
+                <span>Go to Renter Dashboard</span>
+            </a>
+        </section>
+    </div>
+</body>
+</html>

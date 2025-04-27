@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Role | Rental Room</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='role.css') }}">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="sun"></div>
+    <div class="planet"></div>
+
+    <div class="role-container">
+        <h2>Select Your Role</h2>
+        <form action="/setrole" method="POST">
+            <div class="role-options">
+                <label>
+                    <input type="radio" name="role" value="owner" required>
+                    <span class="btn">Owner</span>
+                </label>
+                <label>
+                    <input type="radio" name="role" value="renter" required>
+                    <span class="btn">Renter</span>
+                </label>
+            </div>
+            <button type="submit" class="submit-btn">Continue</button>
+        </form>
+    </div>
+</body>
+</html>

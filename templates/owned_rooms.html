@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Booked Rooms</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='owned_rooms.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>My Booked Rooms</h2>
+
+        {% if rooms %}
+            <div class="room-gallery">
+                {% for room in rooms %}
+                    <div class="room-card">
+                        <div class="room-image">
+                            {% if room[5] %}
+                                <img src="{{ url_for('static', filename='uploads/' + room[5].split('/')[-1]) }}" alt="Room Image" class="room-img">
+                            {% endif %}
+                        </div>
+                        <div class="room-title">
+                            <h3>{{ room[2] }}</h3> <!-- Location -->
+                            <p>Owner: {{ room[4] }}</p> <!-- Owner Email -->
+                        </div>
+
+                        <!-- Room Action Buttons -->
+                        <div class="room-actions">
+                            <!-- Pay Rent Button -->
+                            <form action="{{ url_for('payRent', room_id=room[0]) }}" method="GET">
+                                <button type="submit" class="btn btn-pay">Pay Rent</button>
+                            </form>
+
+                            <!-- Delete Room Button -->
+                            <form action="{{ url_for('DeleteOwnedRoom', room_id=room[0]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this room?');">
+                                <button type="submit" class="btn btn-delete">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>You haven't booked any rooms yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

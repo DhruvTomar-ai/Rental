@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='room_detail.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="room-detail-card">
+            <h2>Room Details</h2>
+
+            <div class="room-image">
+                {% if room[5] %}
+                    <img src="{{ url_for('static', filename='uploads/' + room[5].split('/')[-1]) }}" alt="Room Image">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+            </div>
+
+            <div class="room-info">
+                <p><strong>Location:</strong> {{ room[2] }}</p>
+                <p><strong>Description:</strong> {{ room[3] }}</p>
+                <p><strong>Rent:</strong> ₹{{ room[4] }}/month</p>
+                <p><strong>Owner Email:</strong> {{ room[1] }}</p>
+                
+                {% if booking_status %}
+                    <p><strong>Status:</strong> 
+                        {% if booking_status == 'Approved' %}
+                            <span style="color: green; font-weight: bold;">Approved</span>
+                        {% elif booking_status == 'Rejected' %}
+                            <span style="color: red; font-weight: bold;">Rejected</span>
+                        {% else %}
+                            <span style="color: orange; font-weight: bold;">Pending</span>
+                        {% endif %}
+                    </p>
+                {% endif %}
+            </div>
+
+            <!-- Book Now Button -->
+            {% if not booking_status %}
+                <form action="{{ url_for('book_room', room_id=room[0]) }}" method="POST">
+                    <button type="submit" class="book-btn">Book Now</button>
+                </form>
+            {% endif %}
+        </div>
+
+        <a href="{{ url_for('renter_dashboard') }}" class="back-btn">Back to Dashboard</a>
+    </div>
+</body>
+</html>

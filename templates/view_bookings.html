@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Bookings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='view_bookings.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Your Bookings</h2>
+        <div class="bookings-list">
+            {% if bookings %}
+                {% for booking in bookings %}
+                    <div class="booking-card">
+                        <div class="booking-details">
+                            <p><strong>Room Location:</strong> {{ booking[1] }}</p>
+                            <p><strong>Renter Email:</strong> {{ booking[2] }}</p>
+                            <p><strong>Date of Booking:</strong> {{ booking[3] }}</p>
+                            <p><strong>Status:</strong> {{ booking[4] }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No bookings to display.</p>
+            {% endif %}
+        </div>
+        <a href="{{ url_for('ownerdashboard') }}" class="back-btn">Back to Dashboard</a>
+    </div>
+</body>
+</html>

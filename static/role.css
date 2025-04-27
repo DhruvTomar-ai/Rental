@@ -1,0 +1,122 @@
+/* Background universe setup */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #0a0f1f;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Starfield */
+.stars::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+    animation: moveStars 100s linear infinite;
+    z-index: 0;
+}
+
+@keyframes moveStars {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-500px, -500px); }
+}
+
+/* Sun glow */
+.sun {
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #f9d71c, transparent 70%);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* Planet */
+.planet {
+    position: absolute;
+    bottom: -80px;
+    right: -80px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at 30% 30%, #4a90e2, #0a0f1f);
+    border-radius: 50%;
+    box-shadow: 0 0 50px #4a90e2;
+    opacity: 0.6;
+    z-index: 0;
+}
+
+/* Main content */
+.role-container {
+    background: rgba(18, 18, 28, 0.9);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(100, 100, 255, 0.2);
+    text-align: center;
+    z-index: 1;
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+}
+
+.role-container h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+/* Radio Buttons */
+.role-options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+}
+
+.role-options input[type="radio"] {
+    display: none;
+}
+
+.role-options .btn {
+    background: linear-gradient(145deg, #1e1e2e, #101018);
+    border-radius: 12px;
+    padding: 12px 30px;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.role-options input[type="radio"]:checked + .btn {
+    background: linear-gradient(145deg, #4a90e2, #3461d1);
+    box-shadow: 0 0 15px #4a90e2;
+    transform: scale(1.05);
+}
+
+/* Continue button */
+.submit-btn {
+    background-color: #4a90e2;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.submit-btn:hover {
+    background-color: #326ac0;
+}
